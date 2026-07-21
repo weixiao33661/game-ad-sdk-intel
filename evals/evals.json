@@ -1,0 +1,50 @@
+{
+  "skill_name": "game-ad-sdk-intel",
+  "notes": "Analysis planning (SKILL P0-P10) is primary. Evals/judge are regression only.",
+  "evals": [
+    {
+      "id": "dcxns-full-strategy",
+      "uses_workspace": true,
+      "prompt": "分析 analysis/dcxns 这款小米渠道包的广告 SDK 配置策略：有哪些 SDK、权重怎么划分、远程配置字段含义、什么时候弹广告、发奖规则、有没有伪关闭/转化增强、有没有风控。使用 game-ad-sdk-intel，必须先走 P0–P10 规划流程，再按 phase-checklist 与 output-templates 产出 one-pager、strategy_model.json 和 bound field dictionary。可复用已有 jadx 与 clean_mi10 提取结果，不要再生成噪声字符串大表。对照 references/golden-case-dcxns.md。最后 validate_outputs 必须通过。",
+      "expected_hints": [
+        "primary Xiaomi mediation",
+        "reward 6/6/5 tencent bytedance mimo",
+        "banner mimo only",
+        "click also rewards",
+        "fake close DownloadButtonICP",
+        "no weak huawei/vivo active",
+        "bound fields not tt_appdownloader dump"
+      ]
+    },
+    {
+      "id": "noise-dictionary-cleanup",
+      "uses_workspace": false,
+      "prompt": "这里有一份已归档的噪声字典 analysis/dcxns/skill/_archive_noisy_validation_20260720/skill_validation_field_dictionary.md。用 game-ad-sdk-intel 的 field-taxonomy / protocol-field-inference 规则说明应如何清洗：哪些进 field_dictionary_bound.json，哪些进 unbound candidates，删掉哪类噪声。不要把归档文件当正式结论。重点仍是绑定字段纪律，不是堆关键词。",
+      "expected_hints": [
+        "denylist ui chrome",
+        "parser consumer binding",
+        "noise category excluded from primary"
+      ]
+    },
+    {
+      "id": "oem-false-positive-guard",
+      "uses_workspace": false,
+      "prompt": "仅根据静态弱指纹（如 SplashView、open_ad_、bare com.heytap、AdSlot.Builder）与 china-oem-ad-sdk-fingerprints / oem-architecture-matrix 规则，判断它们能否单独把华为/vivo/OPPO/荣耀标成 high-confidence active primary。强调 primary-first 规划规则。不要发明运行时结论。",
+      "expected_hints": [
+        "weak tokens not primary",
+        "package path rule",
+        "huawei/vivo/oppo weak hits downgraded"
+      ]
+    },
+    {
+      "id": "five-oem-depth-parity",
+      "uses_workspace": false,
+      "prompt": "不打开具体业务 APK，只根据 game-ad-sdk-intel 的五家 oem-*-depth.md，用同一表格对比小米/OPPO/华为/荣耀/vivo 的架构类型、主 ID 词汇、策略主要在客户端还是服务端、下游 DSP 如何定性。这是规划阶段的厂商路由知识检查。",
+      "expected_hints": [
+        "xiaomi mediation vs others direct",
+        "tagid vs posId vs slotId",
+        "capability residual until runtime"
+      ]
+    }
+  ]
+}

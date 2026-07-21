@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Ad SDK Intel"
+  short_description: "Analyze game ad SDK strategy and protocol fields"
+  default_prompt: "Use $game-ad-sdk-intel to analyze a game APK, ad SDK strategy, and client-server protocol fields."

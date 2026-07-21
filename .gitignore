@@ -1,0 +1,12 @@
+# Ignore local noise
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+.env
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
