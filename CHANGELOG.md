@@ -1,3 +1,13 @@
+## 2026-07-22 — v0.3.2 Frida/maps playbook + instrumentation policy
+
+### Added
+- `references/playbooks/PB-07-frida-maps-detection.md` — research ladder for shell Frida/maps checks
+- `references/instrumentation-policy.md` — L-Obs / L-Meas / forbidden production-bypass delivery
+
+### Clarified
+- Frida observation is in-scope for config analysis; safety boundary remains no fraud/production bypass playbooks
+- Clean baseline vs root_frida split unchanged
+
 ## 2026-07-22 — v0.3.1 playbooks (stuck-point solvers)
 
 ### Added

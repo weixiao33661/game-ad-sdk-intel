@@ -75,7 +75,8 @@ Execute in order. Do not mark complete without exit artifact.
 - [ ] Config vs Activity winner → **PB-05** two-line writeup
 - [ ] Hypotheses updated confirmed|refuted|inconclusive
 - [ ] `clean_min_dynamic_done=true` OR `dynamic_blocker` set
-- [ ] Optional: Frida config bodies; proxy separate env
+- [ ] Optional: Frida config bodies (L-Obs); if maps/Frida kill → **PB-07**
+- [ ] Optional: proxy separate env
 - [ ] **Exit:** logs + disposed hypotheses
 
 ## P10 Synthesize & validate

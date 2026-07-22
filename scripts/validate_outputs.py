@@ -246,19 +246,19 @@ def validate_strategy_model(data: Any, rep: Report) -> None:
                     p0_missing_playbook += 1
                     rep.warn(
                         f"{where}: P0 hypothesis missing recommended 'playbook' "
-                        "(e.g. PB-01…PB-06)"
+                        "(e.g. PB-01…PB-07)"
                     )
                 if not h.get("dynamic_test") and res in {"pending", "hypothesis", None, ""}:
                     rep.warn(
                         f"{where}: pending/hypothesis missing recommended 'dynamic_test'"
                     )
             if h.get("playbook") and not re.match(
-                r"^PB-0[1-6]([_-].*)?$", str(h.get("playbook")), re.I
+                r"^PB-0[1-7]([_-].*)?$", str(h.get("playbook")), re.I
             ):
                 # allow free text that contains PB-0x
-                if not re.search(r"PB-0[1-6]", str(h.get("playbook")), re.I):
+                if not re.search(r"PB-0[1-7]", str(h.get("playbook")), re.I):
                     rep.warn(
-                        f"{where}: playbook '{h.get('playbook')}' not in PB-01…PB-06 "
+                        f"{where}: playbook '{h.get('playbook')}' not in PB-01…PB-07 "
                         "(ok if custom; preferred standard ids)"
                     )
         if p0_missing_playbook:

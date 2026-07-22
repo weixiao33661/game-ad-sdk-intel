@@ -13,6 +13,7 @@
 | 有设备但一直不出广告 / no-fill | [PB-04](PB-04-no-fill.md) |
 | 配置里三方权重，运行却总是一家 | [PB-05](PB-05-config-vs-runtime.md) |
 | 发奖条件、点击是否发奖、伪关闭、关闭链路不清 | [PB-06](PB-06-reward-click-close.md) |
+| 壳扫 maps/Frida，一 hook 就崩或分析环境无填充 | [PB-07](PB-07-frida-maps-detection.md) |
 
 ## 与主流程关系
 
@@ -40,3 +41,4 @@ P0–P10 规划  →  卡点  →  Playbook  →  更新 hypotheses[] / 报告�
 | PB-04 | `PB-04-no-fill.md` |
 | PB-05 | `PB-05-config-vs-runtime.md` |
 | PB-06 | `PB-06-reward-click-close.md` |
+| PB-07 | `PB-07-frida-maps-detection.md` |

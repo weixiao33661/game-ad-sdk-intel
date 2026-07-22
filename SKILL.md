@@ -15,7 +15,9 @@ Use this skill for authorized competitor analysis of Android game ad monetizatio
 
 **Static proposes. Dynamic disposes.** Code capability is not production strategy. When a device is available, the clean minimum dynamic set is **mandatory** before finalizing show/trigger/reward/primary-DSP claims.
 
-For risk-control work, identify signals and measurement impact only. Do not provide steps to bypass third-party production risk controls, fake users, defeat anti-fraud, or manipulate ad delivery.
+**Instrumentation:** Frida **observation hooks (L-Obs)** are in-scope and encouraged for config/callback/field capture. Limited **on-device measurement (L-Meas)** on authorized test devices is allowed when needed to finish extraction; label `env` and do not treat it as clean baseline. Do **not** deliver production bypass or ad-fraud playbooks. See `references/instrumentation-policy.md` and **PB-07** for maps/Frida shell detection.
+
+For risk-control work, identify signals and measurement impact only. Do not provide steps to bypass third-party production risk controls, fake users, defeat anti-fraud, or manipulate ad delivery as a product outcome.
 
 ### Priority of mechanisms
 
@@ -46,6 +48,7 @@ Details: `references/tooling-mcp.md`, `references/dynamic-validation.md`.
 | Device but no ads / no-fill | `references/playbooks/PB-04-no-fill.md` |
 | Config weights ≠ runtime DSP | `references/playbooks/PB-05-config-vs-runtime.md` |
 | Reward / click-grant / fake close | `references/playbooks/PB-06-reward-click-close.md` |
+| Frida/maps detection kills process | `references/playbooks/PB-07-frida-maps-detection.md` |
 
 Index: `references/playbooks/README.md`. Playbooks are **subroutines** of P0–P10, not a second workflow.
 
@@ -158,7 +161,8 @@ Use `china-oem-ad-sdk-fingerprints.md` + `oem-architecture-matrix.md`, then the 
 |---|---|
 | `references/tooling-mcp.md` | jadx / IDA order and checklists |
 | `references/dynamic-validation.md` | mandatory clean dynamic + hypothesis schema |
-| `references/playbooks/README.md` | stuck-point playbooks (PB-01…06) |
+| `references/playbooks/README.md` | stuck-point playbooks (PB-01…07) |
+| `references/instrumentation-policy.md` | Frida L-Obs/L-Meas vs forbidden production bypass |
 | `references/report-template.md` | 8-metric Chinese report |
 | `references/output-templates.md` | one-pager + JSON schemas |
 | `references/phase-checklist.md` | execution checkboxes |

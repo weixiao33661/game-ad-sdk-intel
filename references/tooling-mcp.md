@@ -73,9 +73,13 @@ Use for:
 
 ## 3. Device dynamic (MANDATORY when device available)
 
-See `dynamic-validation.md`.
+See `dynamic-validation.md` and `instrumentation-policy.md`.
 
 Static output = proposals. Dynamic = dispose (`confirmed` / `refuted` / `inconclusive`).
+
+**Frida:** default **L-Obs** (print-only) on config/load/show/reward/pre-encrypt.  
+If shell scans `/proc/self/maps` or Frida artifacts → **PB-07** (late attach, narrow hooks, then L-Meas on authorized device only, or blocker).  
+Never skip clean minimum set just because Frida is blocked.
 
 ## 4. Evidence pointers
 
