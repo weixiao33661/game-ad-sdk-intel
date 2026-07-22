@@ -21,10 +21,11 @@ Execute in order. Do not mark complete without exit artifact.
 
 - [ ] jadx-mcp must-do checklist done (`tooling-mcp.md`)
 - [ ] Primary classified with package-path evidence
+- [ ] If multi-SDK conflict → **PB-01**
 - [ ] False OEM positives rejected
 - [ ] Matching `oem-*-depth.md` opened
 - [ ] **Exit:** `06_extracted/sdk_inventory.json`
-- [ ] **Exit:** draft `hypotheses[]` (P0 show/trigger/reward/config)
+- [ ] **Exit:** draft `hypotheses[]` (P0; prefer `playbook` + `dynamic_test`)
 
 ## P3 Config & request structure
 
@@ -54,6 +55,7 @@ Execute in order. Do not mark complete without exit artifact.
 ## P7 Conversion
 
 - [ ] Click-also-reward / fake close / store path checked
+- [ ] If unclear → **PB-06** (E1/E2/E3 matrix)
 - [ ] **Exit:** metric 2.2
 
 ## P8 Protection & risk
@@ -67,8 +69,10 @@ Execute in order. Do not mark complete without exit artifact.
 
 - [ ] Env=`clean` baseline run
 - [ ] Cold start / banner window / reward×3–5 / interstitial if any
-- [ ] Reward outcome matrix (complete / click / early close)
+- [ ] Reward outcome matrix (complete / click / early close) — **PB-06**
 - [ ] Callback order observed
+- [ ] No-fill? → **PB-04** ladder before blaming risk
+- [ ] Config vs Activity winner → **PB-05** two-line writeup
 - [ ] Hypotheses updated confirmed|refuted|inconclusive
 - [ ] `clean_min_dynamic_done=true` OR `dynamic_blocker` set
 - [ ] Optional: Frida config bodies; proxy separate env

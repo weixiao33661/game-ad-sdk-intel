@@ -90,6 +90,10 @@ Required top-level keys:
       "claim": "",
       "metric": 8,
       "priority": "P0",
+      "playbook": "PB-05",
+      "dynamic_test": "clean: trigger reward 5x; record DSP Activity",
+      "if_fail_next": "check init gate / tag cache",
+      "ladder_level_reached": "L2",
       "result": "pending",
       "env": null,
       "evidence": []
@@ -116,6 +120,19 @@ If `analysis_path.device_available` is true:
 - at least **3** hypotheses with `result` in `confirmed|refuted|inconclusive` (not all pending)
 
 If device_available is false: hypotheses may stay pending; report must say L1.
+
+### Playbook fields (recommended; validate **warn** only)
+
+For **P0** hypotheses prefer:
+
+| field | example |
+|---|---|
+| `playbook` | `PB-01` … `PB-06` |
+| `dynamic_test` | one-line experiment |
+| `if_fail_next` | next ladder step |
+| `ladder_level_reached` | `L1` / `L2` / … |
+
+See `references/playbooks/README.md`. Missing playbook on P0 does **not** fail validate in v0.3.1 (warn only).
 
 ## field_dictionary_bound.json
 

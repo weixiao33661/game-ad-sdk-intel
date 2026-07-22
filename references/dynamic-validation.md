@@ -28,7 +28,10 @@
   "from": "getmedconfig parse / positions_normalized",
   "metric": 8,
   "priority": "P0",
+  "playbook": "PB-05",
   "dynamic_test": "clean: open reward 5x; record Activity/adapter",
+  "if_fail_next": "check init gate / cache tie-break",
+  "ladder_level_reached": "L2",
   "expected_if_true": "mixed or weight-consistent winners; config info[] matches",
   "expected_if_false": "single DSP only; or tag closed/no-fill",
   "result": "confirmed",
@@ -36,6 +39,8 @@
   "env": "clean"
 }
 ```
+
+`playbook` / `if_fail_next` recommended for P0; `validate_outputs` warns if missing (does not fail).
 
 ## MANDATORY clean minimum set (device available)
 

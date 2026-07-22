@@ -1,3 +1,14 @@
+## 2026-07-22 — v0.3.1 playbooks (stuck-point solvers)
+
+### Added
+- `references/playbooks/` PB-01…PB-06 (Chinese): primary, shell/native, encrypted traffic, no-fill, config vs runtime, reward/click/fake-close
+- SKILL "When stuck" index
+- hypothesis recommended fields `playbook` / `dynamic_test` / `if_fail_next` (validate **warn** only)
+
+### Policy
+- Playbooks are subroutines of P0–P10, not a second main flow
+- Device mandatory clean dynamic unchanged
+
 # Changelog
 
 ## 2026-07-20 — LLM judge (secondary) + planning-first emphasis

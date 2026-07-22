@@ -38,12 +38,16 @@ ALLOWED_FIELD_CATEGORIES = {
     "risk",
     "attribution",
     "event",
+    "event_track",
     "reward",
+    "reward_logic",
     "network",
     "consent",
     "creative_asset",
+    "creative_model",
     "channel_config",
     "dsp_request",
+    "dsp_bidding_callback",
     "frequency_cap",
     "privacy",
     "unknown",
@@ -67,9 +71,10 @@ ALLOWED_HYP_RESULTS = {
     "confirmed",
     "refuted",
     "inconclusive",
+    "supported",  # legacy alias → treat like confirmed for dispose count
 }
 
-DISPOSED = {"confirmed", "refuted", "inconclusive"}
+DISPOSED = {"confirmed", "refuted", "inconclusive", "supported"}
 
 NOISE_FIELD_PATTERNS = [
     re.compile(r"^tt_appdownloader_", re.I),
@@ -220,6 +225,7 @@ def validate_strategy_model(data: Any, rep: Report) -> None:
         if not hyps:
             rep.warn("hypotheses array is empty")
         disposed = 0
+        p0_missing_playbook = 0
         for i, h in enumerate(hyps):
             where = f"hypotheses[{i}]"
             if not isinstance(h, dict):
@@ -233,6 +239,33 @@ def validate_strategy_model(data: Any, rep: Report) -> None:
                 rep.warn(f"{where}: uncommon result '{res}'")
             if res in DISPOSED:
                 disposed += 1
+            # v0.3.1 playbook fields: warn only (do not fail)
+            prio = str(h.get("priority") or "").upper()
+            if prio in {"P0", "0", "HIGH"} or h.get("priority") == 0:
+                if not h.get("playbook"):
+                    p0_missing_playbook += 1
+                    rep.warn(
+                        f"{where}: P0 hypothesis missing recommended 'playbook' "
+                        "(e.g. PB-01…PB-06)"
+                    )
+                if not h.get("dynamic_test") and res in {"pending", "hypothesis", None, ""}:
+                    rep.warn(
+                        f"{where}: pending/hypothesis missing recommended 'dynamic_test'"
+                    )
+            if h.get("playbook") and not re.match(
+                r"^PB-0[1-6]([_-].*)?$", str(h.get("playbook")), re.I
+            ):
+                # allow free text that contains PB-0x
+                if not re.search(r"PB-0[1-6]", str(h.get("playbook")), re.I):
+                    rep.warn(
+                        f"{where}: playbook '{h.get('playbook')}' not in PB-01…PB-06 "
+                        "(ok if custom; preferred standard ids)"
+                    )
+        if p0_missing_playbook:
+            rep.warn(
+                f"hypotheses: {p0_missing_playbook} P0 item(s) without playbook "
+                "(warn only; see references/playbooks/)"
+            )
         ap = data.get("analysis_path") if isinstance(data.get("analysis_path"), dict) else {}
         if ap.get("device_available") and ap.get("clean_min_dynamic_done") and disposed < 3:
             rep.err(

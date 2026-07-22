@@ -29,11 +29,14 @@ Default order for authorized competitor ad-SDK analysis.
 
 ```text
 jadx/IDA claim → hypotheses[]
+  → stuck? open playbooks/PB-0x
   → (device) run test → confirmed | refuted | inconclusive
   → report language follows status
 ```
 
 Without device: deliver L1; keep hypothesis labels; list probes.
+
+Playbook index: `references/playbooks/README.md` (PB-01…06).
 
 ## Static triage output
 

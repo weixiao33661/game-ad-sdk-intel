@@ -36,6 +36,19 @@ APK → jadx-mcp (always)
 
 Details: `references/tooling-mcp.md`, `references/dynamic-validation.md`.
 
+### When stuck (open a playbook — do not invent a new process)
+
+| Symptom | Playbook |
+|---|---|
+| Multi-SDK / who is primary | `references/playbooks/PB-01-pick-primary.md` |
+| Shell / `vm_*` / logic in `.so` | `references/playbooks/PB-02-shell-native.md` |
+| Encrypted traffic / no field samples | `references/playbooks/PB-03-encrypted-traffic.md` |
+| Device but no ads / no-fill | `references/playbooks/PB-04-no-fill.md` |
+| Config weights ≠ runtime DSP | `references/playbooks/PB-05-config-vs-runtime.md` |
+| Reward / click-grant / fake close | `references/playbooks/PB-06-reward-click-close.md` |
+
+Index: `references/playbooks/README.md`. Playbooks are **subroutines** of P0–P10, not a second workflow.
+
 ### Non-negotiable rules
 
 1. **Primary layer first** from init/load evidence; else demand/residual/noise.
@@ -145,6 +158,7 @@ Use `china-oem-ad-sdk-fingerprints.md` + `oem-architecture-matrix.md`, then the 
 |---|---|
 | `references/tooling-mcp.md` | jadx / IDA order and checklists |
 | `references/dynamic-validation.md` | mandatory clean dynamic + hypothesis schema |
+| `references/playbooks/README.md` | stuck-point playbooks (PB-01…06) |
 | `references/report-template.md` | 8-metric Chinese report |
 | `references/output-templates.md` | one-pager + JSON schemas |
 | `references/phase-checklist.md` | execution checkboxes |
@@ -190,6 +204,7 @@ Chinese report with metrics **0–8** (path + eight cores). Structured:
 - [ ] All 8 metrics present (unknown allowed with probe)
 - [ ] `hypotheses[]` present
 - [ ] If device_available: clean min dynamic done **or** dynamic_blocker set; ≥3 hypotheses disposed
+- [ ] Stuck points resolved via playbooks (or explicit unknown after ladder); P0 hyps prefer `playbook` + `dynamic_test`
 - [ ] No pure-static “production strategy” wording for undisposed P0 show/trigger/reward claims when device existed
 - [ ] Bound dict without UI noise dumps
 - [ ] `validate_outputs.py` exit 0
@@ -199,7 +214,9 @@ Chinese report with metrics **0–8** (path + eight cores). Structured:
 | Failure | Fix |
 |---|---|
 | Static-only final report despite adb device | Run mandatory clean min dynamic |
-| IDA-first on all so | jadx first; native gate |
+| Stuck improvising without playbook | Open PB-01…06 index |
+| Config weights pasted as runtime truth | PB-05 two-line config vs winner |
+| IDA-first on all so | jadx first; native gate; PB-02 |
 | Weak token OEM primary | package-path rules |
 | Xiaomi fields on OPPO primary | correct depth card |
 | Adapter AAR = live waterfall | config/runtime dispose |
