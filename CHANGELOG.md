@@ -1,3 +1,14 @@
+## 2026-07-22 — v0.3.3 capability map + Chinese README
+
+### Added
+- `references/competitor-analysis-capability-map.md` — merged from analysis `汇总.md` (lifecycle, strategy config, metadata/events, strategy recognition, risk matrix, aggregation, priorities, three asset libraries)
+- `README.zh-CN.md` — full Chinese documentation for GitHub
+- English `README.md` updated with real clone URL and zh-CN link
+
+### Notes
+- Capability map is a checklist layer on top of 8 metrics / P0–P10, not a second workflow
+- Risk section remains detection/impact oriented (no production bypass playbooks)
+
 ## 2026-07-22 — v0.3.2 Frida/maps playbook + instrumentation policy
 
 ### Added

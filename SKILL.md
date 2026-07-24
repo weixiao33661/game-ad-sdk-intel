@@ -79,7 +79,8 @@ Every final report must cover:
 | 7 | 风控机制 | How abnormal traffic may be detected (client signals + paired envs) |
 | 8 | 竞品策略参数 | Slots, waterfall/bid, weights, downstream IDs, switches |
 
-Template: `references/report-template.md`.
+Template: `references/report-template.md`.  
+Full business checklist (lifecycle, strategy recognition, metadata/events, risk matrix): `references/competitor-analysis-capability-map.md`.
 
 ## Workflow (phase gates)
 
@@ -164,6 +165,7 @@ Use `china-oem-ad-sdk-fingerprints.md` + `oem-architecture-matrix.md`, then the 
 | `references/playbooks/README.md` | stuck-point playbooks (PB-01…07) |
 | `references/instrumentation-policy.md` | Frida L-Obs/L-Meas vs forbidden production bypass |
 | `references/report-template.md` | 8-metric Chinese report |
+| `references/competitor-analysis-capability-map.md` | 汇总能力地图：生命周期/策略识别/元数据/风控矩阵 |
 | `references/output-templates.md` | one-pager + JSON schemas |
 | `references/phase-checklist.md` | execution checkboxes |
 | `references/analysis-pipeline.md` | phase order |
