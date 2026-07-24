@@ -83,5 +83,6 @@ Execute in order. Do not mark complete without exit artifact.
 
 - [ ] One-pager metrics 0–8
 - [ ] Technical report per template
+- [ ] Lifecycle / strategy-recognition gaps checked via `competitor-analysis-capability-map.md` (optional pass)
 - [ ] `metrics_coverage` filled
 - [ ] `python scripts/validate_outputs.py <workspace>` PASS

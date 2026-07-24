@@ -2,6 +2,9 @@
 
 Default Chinese. Every section: **结论 | 状态(hypothesis/confirmed/refuted/inconclusive) | 证据(jadx/IDA/动态) | 缺口探针**.
 
+查漏补缺（生命周期逐步、策略识别模式、元数据/事件库、风控矩阵）见  
+`competitor-analysis-capability-map.md`。
+
 ## 0. 样本与分析路径
 
 - 包名、版本、渠道、引擎、壳
