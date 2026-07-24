@@ -1,3 +1,9 @@
+## 2026-07-22 — docs: detailed Chinese README
+
+### Changed
+- `README.md` expanded into a full Chinese handbook (TOC, principles, P0–P10, playbooks, artifacts, Frida policy, evidence levels, anti-patterns)
+- `README.en.md` shortened English overview with link to Chinese homepage
+
 ## 2026-07-22 — v0.3.3 capability map + Chinese README
 
 ### Added

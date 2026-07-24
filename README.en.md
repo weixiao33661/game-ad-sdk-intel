@@ -1,73 +1,63 @@
 # game-ad-sdk-intel
 
+**中文文档（仓库首页）：[README.md](./README.md)**
+
 Agent skill for **authorized** reverse-engineering of mobile game **ad SDK strategy configuration** (Android-focused).
 
-**中文说明：[README.md](./README.md)**
-
-Repository: https://github.com/weixiao33661/game-ad-sdk-intel
+Repository: https://github.com/weixiao33661/game-ad-sdk-intel  
+Version: see [`VERSION`](./VERSION) · Agent entry: [`SKILL.md`](./SKILL.md) · License: [MIT](./LICENSE)
 
 ## What it does
 
-Given a game APK (plus optional device runs), produce an evidence-backed profile of:
+Turn a game **APK** (+ optional device runs) into an **auditable** competitor ad-intel package:
 
-1. Ad **request field** structures  
-2. **Show / click / frequency** policies  
-3. **User-trigger** → ad behavior mapping  
-4. **Device profile** fields collected (OAID, ROM, model, …)  
-5. **Data pipeline** (build → upload → callbacks)  
-6. SDK **protection / anti-RE** signals  
-7. **Risk-control** signals (measurement-oriented)  
-8. Competitor **strategy parameters** (slots, waterfall/bid, weights, downstream IDs)
+| # | Metric |
+|---|---|
+| 1 | Request field structures |
+| 2 | Show / click / frequency policies |
+| 3 | User-trigger → ad behavior |
+| 4 | Device profile fields collected |
+| 5 | Data pipeline (init → config → load → show → events) |
+| 6 | SDK protection / anti-RE signals |
+| 7 | Risk-control signals (measurement-oriented) |
+| 8 | Strategy parameters (slots, waterfall/bid, weights, downstream IDs) |
 
-Extended checklists (lifecycle, strategy recognition, metadata/events, risk matrix) live in  
-`references/competitor-analysis-capability-map.md`.
+Extended business checklists: [`references/competitor-analysis-capability-map.md`](./references/competitor-analysis-capability-map.md).
 
 ## Tool path
 
 ```text
 APK → jadx-mcp (always)
-    → (gate) ida-pro-mcp / idalib-mcp for important native code
-    → (if device) MANDATORY clean minimum dynamic validation
-    → optional Frida L-Obs / proxy (separate env)
-    → 8-metric report + structured JSON
-    → scripts/validate_outputs.py
+    → (gate) ida-pro-mcp / idalib-mcp
+    → (if device) MANDATORY clean min dynamic
+    → optional Frida L-Obs / proxy (tagged env)
+    → 8-metric report + JSON
+    → python scripts/validate_outputs.py <workspace>
 ```
 
-**Static proposes. Dynamic disposes.**
+**Static proposes. Dynamic disposes.**  
+Stuck? [`references/playbooks/`](./references/playbooks/) (PB-01…PB-07).
 
-Stuck? Open `references/playbooks/` (PB-01…PB-07).
+## Principles (short)
+
+- Planning (P0–P10) is the product; judge/evals are optional regression  
+- Device available ⇒ clean baseline required for show/trigger/reward claims  
+- Config ≠ runtime winner (write both lines)  
+- Field needs consumer; capability ≠ active; no cross-vendor field models  
+- Frida observation in-scope; production bypass / ad-fraud playbooks out of scope  
 
 ## Install
 
 ```bash
-# Codex
 git clone https://github.com/weixiao33661/game-ad-sdk-intel.git ~/.codex/skills/game-ad-sdk-intel
-
-# Claude Code
-git clone https://github.com/weixiao33661/game-ad-sdk-intel.git ~/.claude/skills/game-ad-sdk-intel
+# or ~/.claude/skills/game-ad-sdk-intel
 ```
-
-Entry file: `SKILL.md`.
-
-## Layout
-
-```text
-game-ad-sdk-intel/
-  SKILL.md
-  README.md / README.zh-CN.md
-  VERSION / CHANGELOG.md / LICENSE
-  evals/
-  scripts/
-  references/          # OEM cards, templates, playbooks, capability map
-  agents/
-```
-
-## Validate a workspace
 
 ```bash
-python scripts/validate_outputs.py /path/to/analysis_workspace
-python scripts/run_evals.py --workspace /path/to/analysis_workspace --judge
+cd ~/.codex/skills/game-ad-sdk-intel && git pull origin main
 ```
+
+## Workspace outputs
 
 ```text
 workspace/
@@ -77,22 +67,28 @@ workspace/
   06_extracted/sdk_inventory.json
 ```
 
+```bash
+python scripts/validate_outputs.py /path/to/workspace
+python scripts/run_evals.py --workspace /path/to/workspace --judge
+```
+
 ## Multi-OEM
 
-Xiaomi mediation, OPPO/HeyTap, Huawei Petal, Honor, vivo (+ GDT/Pangle notes).  
-Do not copy one vendor’s field model onto another.
+Xiaomi mediation, OPPO/HeyTap, Huawei, Honor, vivo (+ GDT/Pangle notes).  
+See `references/oem-*-depth.md` and `oem-architecture-matrix.md`.
 
 ## Scope
 
-- Authorized competitive and defensive research.  
-- Documents detection points and measurement impact.  
-- Frida **observation** is in-scope for config analysis (`instrumentation-policy.md`).  
-- Does **not** ship production risk-control bypass or ad-fraud playbooks.
+Authorized competitive / defensive research. Documents detection and measurement impact.  
+Does **not** ship production risk-control bypass or ad-fraud instructions.
+
+## Layout
+
+```text
+SKILL.md, README.md (中文), README.en.md (this file)
+scripts/  references/  evals/  agents/
+```
 
 ## Version
 
-See `VERSION`.
-
-## License
-
-MIT — see `LICENSE`.
+See `VERSION` and `CHANGELOG.md`.
